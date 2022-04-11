@@ -62,12 +62,12 @@ class _TextField01State extends State<TextField01> {
           decoration: InputDecoration(
             border: InputBorder.none,
             hintText: widget.hint,
-            hintStyle: TextStyle(
+            hintStyle: const TextStyle(
               fontFamily: AppTheme.fontFamily,
               fontSize: 14,
-              fontWeight: FontWeight.normal,
+              fontWeight: FontWeight.w500,
               height: 1.5,
-              color: AppTheme.dark.withOpacity(0.6),
+              color: AppTheme.gray,
             ),
             suffixIcon: widget.pass == true
                 ? GestureDetector(
