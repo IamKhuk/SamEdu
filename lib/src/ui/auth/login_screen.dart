@@ -18,6 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
   bool onHover = false;
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 MainButton(
                   text: 'Sign in',
                   onHover: onHover,
+                  onLoading: _isLoading,
                 ),
               ],
             ),

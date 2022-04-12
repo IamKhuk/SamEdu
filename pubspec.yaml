@@ -15,7 +15,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.0.3
   flutter_swipe_action_cell: ^2.2.0
-  pinput: ^2.2.7
+  pinput: ^1.2.2
   image_picker: ^0.8.5
   rxdart: ^0.27.3
   shared_preferences: ^2.0.13

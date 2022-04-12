@@ -19,6 +19,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _passController = TextEditingController();
   final TextEditingController _passAgainController = TextEditingController();
   bool onHover = true;
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -120,6 +121,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: MainButton(
                 text: 'Sign in',
                 onHover: onHover,
+                onLoading: _isLoading,
               ),
             ),
           ],
