@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:samedu/src/dialog/bottom_dialog.dart';
 import 'package:samedu/src/ui/auth/signup_screen.dart';
 import 'package:samedu/src/widgets/button/main_button.dart';
 import 'package:samedu/src/widgets/text_field/text_field_01.dart';
 import 'package:samedu/src/widgets/title/title_02.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 
 import '../../theme/app_theme.dart';
+import '../menu/main_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -91,10 +94,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 const SizedBox(height: 32),
-                MainButton(
-                  text: 'Sign in',
-                  onHover: onHover,
-                  onLoading: _isLoading,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _isLoading = true;
+                    });
+                    _getInfo(
+                      _emailController.text,
+                      _passController.text,
+                    );
+                    setState(() {
+                      _isLoading = false;
+                    });
+                  },
+                  child: MainButton(
+                    text: 'Sign in',
+                    onHover: onHover,
+                    onLoading: _isLoading,
+                  ),
                 ),
               ],
             ),
@@ -152,5 +169,28 @@ class _LoginScreenState extends State<LoginScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _getInfo(String e, String pass) async {
+    SharedPreferences vr = await SharedPreferences.getInstance();
+    String email = vr.getString("email") ?? "";
+    String password = vr.getString("password") ?? "";
+
+    if (e == email && password == pass) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return const MainScreen();
+          },
+        ),
+      );
+    } else {
+      BottomDialog.showFailed(
+        context,
+        'Login error',
+        'Incorrect login or password, Please try again',
+      );
+    }
   }
 }
