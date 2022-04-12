@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:samedu/src/dialog/bottom_dialog.dart';
+import 'package:samedu/src/ui/auth/login_screen.dart';
+import 'package:samedu/src/utils/utils.dart';
 import 'dart:io';
 import 'package:samedu/src/widgets/title/title_02.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../theme/app_theme.dart';
 import '../../widgets/button/main_button.dart';
 import '../../widgets/text_field/text_field_01.dart';
@@ -118,15 +122,74 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 right: 24,
                 top: 20,
               ),
-              child: MainButton(
-                text: 'Sign in',
-                onHover: onHover,
-                onLoading: _isLoading,
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _isLoading = true;
+                  });
+                  _saveInfo(
+                    _emailController.text,
+                    _passController.text,
+                    _passAgainController.text,
+                  );
+                  setState(() {
+                    _isLoading = false;
+                  });
+                },
+                child: MainButton(
+                  text: 'Sign in',
+                  onHover: onHover,
+                  onLoading: _isLoading,
+                ),
               ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  Future<void> _saveInfo(
+    String e,
+    String pas,
+    String pasAgain,
+  ) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    if (Utils.emailValidator(_emailController.text) == true) {
+      if (Utils.passwordValidator(_passController.text) == true) {
+        if (_passController.text == _passAgainController.text) {
+          prefs.setString("email", e);
+          prefs.setString("password", pas);
+          prefs.setString("password", pasAgain);
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return const LoginScreen();
+              },
+            ),
+          );
+        } else {
+          BottomDialog.showFailed(
+            context,
+            'Confirm Password Failed',
+            'Please enter the same password you used above',
+          );
+        }
+      } else {
+        BottomDialog.showFailed(
+          context,
+          'Password is too Weak',
+          'Password must be at least 8 character long and must contain at least 1 number, 1 Uppercase letter and 1 special character',
+        );
+      }
+    } else {
+      BottomDialog.showFailed(
+        context,
+        'Invalid Email Address',
+        'Please enter valid email address so that we can register you correctly',
+      );
+    }
   }
 }
