@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:samedu/src/ui/auth/signup_screen.dart';
 import 'package:samedu/src/widgets/button/main_button.dart';
 import 'package:samedu/src/widgets/text_field/text_field_01.dart';
 import 'package:samedu/src/widgets/title/title_02.dart';
@@ -17,7 +17,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
-  bool onHover = true;
+  bool onHover = false;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextField01(
                   controller: _passController,
                   hint: 'Your password',
-                  pass: false,
+                  pass: true,
                 ),
                 const SizedBox(height: 16),
                 Row(
@@ -98,11 +98,16 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
           Container(
+            height: 1,
+            width: MediaQuery.of(context).size.width,
+            color: AppTheme.gray,
+          ),
+          Container(
             padding: EdgeInsets.only(
               bottom: Platform.isIOS ? 32 : 24,
               left: 16,
               right: 16,
-              top: 32,
+              top: 20,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -119,14 +124,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) {
-                    //       return RegisterScreen();
-                    //     },
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return const SignUpScreen();
+                        },
+                      ),
+                    );
                   },
                   child: const Text(
                     'Sign up',
