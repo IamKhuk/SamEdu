@@ -89,13 +89,31 @@ class _SplashScreenState extends State<SplashScreen>
           Center(
             child: SlideTransition(
               position: offset!,
-              child: Image.asset(
-                'assets/images/logo_white.png',
-                height: 108,
-                width: 108,
+              child: SizedBox(
+                height: 158,
+                child: Column(
+                  children: [
+                    Image.asset(
+                      'assets/images/logo_white.png',
+                      height: 108,
+                      width: 108,
+                    ),
+                    const SizedBox(height: 8),
+                    const Text(
+                      'SamEdu',
+                      style: TextStyle(
+                        fontFamily: AppTheme.fontFamily,
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        height: 1.5,
+                        color: AppTheme.white,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
+          )
         ],
       ),
     );
