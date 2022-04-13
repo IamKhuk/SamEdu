@@ -26,6 +26,7 @@ class _TextField01State extends State<TextField01> {
   Widget build(BuildContext context) {
     return Container(
       height: 44,
+      width: MediaQuery.of(context).size.width - 48,
       decoration: BoxDecoration(
         color: AppTheme.lightTwo,
         borderRadius: BorderRadius.circular(12),
@@ -43,7 +44,7 @@ class _TextField01State extends State<TextField01> {
           left: 16,
           right: 16,
         ),
-        child: TextField(
+        child: TextFormField(
           enabled: true,
           controller: widget.controller,
           enableSuggestions: true,
@@ -54,7 +55,6 @@ class _TextField01State extends State<TextField01> {
             fontFamily: AppTheme.fontFamily,
             fontSize: 14,
             fontWeight: FontWeight.normal,
-            height: 1.5,
             color: AppTheme.dark,
           ),
           autofocus: false,
@@ -65,8 +65,7 @@ class _TextField01State extends State<TextField01> {
               fontFamily: AppTheme.fontFamily,
               fontSize: 14,
               fontWeight: FontWeight.w500,
-              height: 1.5,
-              color: AppTheme.gray,
+              color: AppTheme.light,
             ),
             suffixIcon: widget.pass == true
                 ? GestureDetector(
@@ -76,14 +75,18 @@ class _TextField01State extends State<TextField01> {
                       });
                     },
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 4),
+                      padding: const EdgeInsets.only(
+                        left: 24,
+                        top: 10,
+                        bottom: 10,
+                      ),
                       child: obscure == false
                           ? SvgPicture.asset(
                               'assets/icons/eye.svg',
                               color: AppTheme.light,
                             )
                           : SvgPicture.asset(
-                              'assets/ions/eye_closed.svg',
+                              'assets/icons/eye_closed.svg',
                               color: AppTheme.blue,
                             ),
                     ),

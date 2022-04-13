@@ -39,7 +39,6 @@ class _LoginScreenState extends State<LoginScreen> {
             Expanded(
               child: ListView(
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 children: [
                   const SizedBox(height: 72),
@@ -121,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               height: 1,
               width: MediaQuery.of(context).size.width,
-              color: AppTheme.gray,
+              color: AppTheme.light,
             ),
             Container(
               padding: EdgeInsets.only(

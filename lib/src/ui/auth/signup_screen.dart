@@ -67,7 +67,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Expanded(
               child: ListView(
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 children: [
                   const SizedBox(height: 72),

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
@@ -51,12 +52,11 @@ class _VerificationScreenState extends State<VerificationScreen> {
 
   final BoxDecoration pinPutDecoration = BoxDecoration(
     color: AppTheme.white,
-    border: Border.all(color: AppTheme.gray),
     borderRadius: BorderRadius.circular(4),
     boxShadow: [
       BoxShadow(
         offset: const Offset(0, 4),
-        color: const Color(0xFF000000).withOpacity(0.5),
+        color: const Color(0xFF000000).withOpacity(0.2),
         blurRadius: 20,
         spreadRadius: 0,
       ),
@@ -66,7 +66,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppTheme.bg,
+      backgroundColor: AppTheme.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -165,26 +165,29 @@ class _VerificationScreenState extends State<VerificationScreen> {
                         )
                       : Container(),
                   const SizedBox(height: 40),
-                  PinPut(
-                    eachFieldWidth: 48,
-                    eachFieldHeight: 48,
-                    withCursor: false,
-                    fieldsCount: 4,
-                    onSubmit: (String pin) {
-                      _initPinPut(pin);
-                    },
-                    focusNode: _pinPutFocusNode,
-                    controller: _pinPutController,
-                    submittedFieldDecoration: pinPutDecoration,
-                    selectedFieldDecoration: pinPutDecoration,
-                    followingFieldDecoration: pinPutDecoration,
-                    pinAnimationType: PinAnimationType.scale,
-                    textStyle: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: AppTheme.fontFamily,
-                      height: 1.4,
-                      color: AppTheme.dark,
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: PinPut(
+                      eachFieldWidth: 48,
+                      eachFieldHeight: 48,
+                      withCursor: false,
+                      fieldsCount: 4,
+                      onSubmit: (String pin) {
+                        _initPinPut(pin);
+                      },
+                      focusNode: _pinPutFocusNode,
+                      controller: _pinPutController,
+                      submittedFieldDecoration: pinPutDecoration,
+                      selectedFieldDecoration: pinPutDecoration,
+                      followingFieldDecoration: pinPutDecoration,
+                      pinAnimationType: PinAnimationType.scale,
+                      textStyle: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: AppTheme.fontFamily,
+                        height: 1.4,
+                        color: AppTheme.dark,
+                      ),
                     ),
                   ),
                   timer == 0
@@ -231,24 +234,31 @@ class _VerificationScreenState extends State<VerificationScreen> {
                 ],
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context).popUntil(
-                  (route) => route.isFirst,
-                );
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return const LoginScreen();
-                    },
-                  ),
-                );
-              },
-              child: MainButton(
-                text: 'Done',
-                onHover: onHover,
-                onLoading: _isLoading,
+            Padding(
+              padding: EdgeInsets.only(
+                left: 24,
+                right: 24,
+                bottom: Platform.isIOS ? 32 : 24,
+              ),
+              child: GestureDetector(
+                onTap: () {
+                  Navigator.of(context).popUntil(
+                    (route) => route.isFirst,
+                  );
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return const LoginScreen();
+                      },
+                    ),
+                  );
+                },
+                child: MainButton(
+                  text: 'Done',
+                  onHover: onHover,
+                  onLoading: _isLoading,
+                ),
               ),
             ),
           ],
@@ -273,6 +283,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
   Future<void> _initPinPut(String pin) async {
     setState(() {
       _isLoading = true;
+      onHover = true;
     });
 
     Navigator.pushReplacement(
