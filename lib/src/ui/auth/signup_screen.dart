@@ -27,6 +27,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (_emailController.text.isNotEmpty &&
+        _passController.text.isNotEmpty &&
+        _passAgainController.text.isNotEmpty){
+      setState(() {
+        onHover = false;
+      });
+    }else{
+      setState(() {
+        onHover = true;
+      });
+    }
     return Scaffold(
       backgroundColor: AppTheme.white,
       appBar: AppBar(
