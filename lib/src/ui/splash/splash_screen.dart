@@ -89,18 +89,13 @@ class _SplashScreenState extends State<SplashScreen>
           Center(
             child: SlideTransition(
               position: offset!,
-              child: const Text(
-                'SamEdu',
-                style: TextStyle(
-                  fontFamily: AppTheme.fontFamily,
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                  height: 1.5,
-                  color: AppTheme.white,
-                ),
+              child: Image.asset(
+                'assets/images/logo_white.png',
+                height: 108,
+                width: 108,
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -134,7 +129,7 @@ class _SplashScreenState extends State<SplashScreen>
                   ? const OnBoardingScreen()
                   : token == ""
                       ? const LoginScreen()
-                      : MainScreen();
+                      : const MainScreen();
             },
           ),
         );
