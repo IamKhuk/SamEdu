@@ -6,7 +6,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:pinput/pin_put/pin_put.dart';
 import 'package:samedu/src/widgets/button/main_button.dart';
 import '../../theme/app_theme.dart';
-import '../menu/main_screen.dart';
 import 'login_screen.dart';
 
 class VerificationScreen extends StatefulWidget {
@@ -56,7 +55,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
     boxShadow: [
       BoxShadow(
         offset: const Offset(0, 4),
-        color: const Color(0xFF000000).withOpacity(0.2),
+        color: const Color(0xFF000000).withOpacity(0.09),
         blurRadius: 20,
         spreadRadius: 0,
       ),
@@ -290,7 +289,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
       context,
       MaterialPageRoute(
         builder: (context) {
-          return const MainScreen();
+          return const LoginScreen();
         },
       ),
     );
