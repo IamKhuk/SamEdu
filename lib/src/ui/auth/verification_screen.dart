@@ -9,13 +9,11 @@ import '../menu/main_screen.dart';
 import 'login_screen.dart';
 
 class VerificationScreen extends StatefulWidget {
-  final String username;
   final String email;
   final String password;
 
   const VerificationScreen({
     Key? key,
-    required this.username,
     required this.email,
     required this.password,
   }) : super(key: key);
@@ -54,7 +52,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
   final BoxDecoration pinPutDecoration = BoxDecoration(
     color: AppTheme.white,
     border: Border.all(color: AppTheme.gray),
-    borderRadius: BorderRadius.circular(16),
+    borderRadius: BorderRadius.circular(4),
     boxShadow: [
       BoxShadow(
         offset: const Offset(0, 4),
@@ -168,8 +166,8 @@ class _VerificationScreenState extends State<VerificationScreen> {
                       : Container(),
                   const SizedBox(height: 40),
                   PinPut(
-                    eachFieldWidth: 68,
-                    eachFieldHeight: 72,
+                    eachFieldWidth: 48,
+                    eachFieldHeight: 48,
                     withCursor: false,
                     fieldsCount: 4,
                     onSubmit: (String pin) {
@@ -182,7 +180,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     followingFieldDecoration: pinPutDecoration,
                     pinAnimationType: PinAnimationType.scale,
                     textStyle: const TextStyle(
-                      fontSize: 24,
+                      fontSize: 18,
                       fontWeight: FontWeight.w600,
                       fontFamily: AppTheme.fontFamily,
                       height: 1.4,

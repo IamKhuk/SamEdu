@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:samedu/src/dialog/bottom_dialog.dart';
-import 'package:samedu/src/ui/auth/login_screen.dart';
+import 'package:samedu/src/ui/auth/verification_screen.dart';
 import 'package:samedu/src/utils/utils.dart';
 import 'dart:io';
 import 'package:samedu/src/widgets/title/title_02.dart';
@@ -156,22 +156,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
     String pasAgain,
   ) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    String email = _emailController.text.replaceAll(' ', '');
+    String password = _passController.text.replaceAll(' ', '');
 
     if (Utils.emailValidator(
-          _emailController.text.replaceAll(
-            ' ',
-            '',
-          ),
+          email,
         ) ==
         true) {
-      if (Utils.passwordValidator(
-            _passController.text.replaceAll(
-              ' ',
-              '',
-            ),
-          ) ==
-          true) {
-        if (_passController.text == _passAgainController.text) {
+      if (Utils.passwordValidator(password) == true) {
+        if (password == _passAgainController.text) {
           prefs.setString("email", e);
           prefs.setString("password", pas);
           prefs.setString("password", pasAgain);
@@ -179,7 +172,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
             context,
             MaterialPageRoute(
               builder: (context) {
-                return const LoginScreen();
+                return VerificationScreen(
+                  email: email,
+                  password: password,
+                );
               },
             ),
           );

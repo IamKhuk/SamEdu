@@ -36,7 +36,12 @@ class BottomDialog {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const SizedBox(height: 24),
-                        Image.asset('assets/images/success.png'),
+                        ClipRRect(
+                          child: Image.asset(
+                            'assets/images/success.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                         const SizedBox(height: 20),
                         const Text(
                           'Good Job!',
@@ -49,10 +54,16 @@ class BottomDialog {
                           ),
                         ),
                         const SizedBox(height: 8),
-                        const Title02(text: 'Thanks for joining us'),
+                        Row(
+                          children: const [
+                            Expanded(
+                              child: Title02(text: 'Thanks for joining us'),
+                            ),
+                          ],
+                        ),
                         const Spacer(),
                         GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             Navigator.pop(context);
                           },
                           child: const MainButton(
@@ -108,7 +119,12 @@ class BottomDialog {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const SizedBox(height: 24),
-                        Image.asset('assets/images/failed.png'),
+                        ClipRRect(
+                          child: Image.asset(
+                            'assets/images/failed.png',
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                         const SizedBox(height: 20),
                         Text(
                           title,
@@ -121,10 +137,16 @@ class BottomDialog {
                           ),
                         ),
                         const SizedBox(height: 8),
-                        Title02(text: msg),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Title02(text: msg),
+                            ),
+                          ],
+                        ),
                         const Spacer(),
                         GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             Navigator.pop(context);
                           },
                           child: Container(
