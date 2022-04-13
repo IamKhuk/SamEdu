@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:samedu/src/widgets/button/main_button.dart';
-import 'package:samedu/src/widgets/title/title_02.dart';
 
 import '../theme/app_theme.dart';
 
@@ -36,10 +35,13 @@ class BottomDialog {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const SizedBox(height: 24),
-                        ClipRRect(
-                          child: Image.asset(
-                            'assets/images/success.png',
-                            fit: BoxFit.cover,
+                        SizedBox(
+                          height: 176,
+                          child: ClipRRect(
+                            child: Image.asset(
+                              'assets/images/success.png',
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -57,7 +59,17 @@ class BottomDialog {
                         Row(
                           children: const [
                             Expanded(
-                              child: Title02(text: 'Thanks for joining us'),
+                              child: Text(
+                                'Thanks for joining us',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                  fontFamily: AppTheme.fontFamily,
+                                  height: 1.5,
+                                  color: AppTheme.gray,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ],
                         ),
@@ -119,10 +131,13 @@ class BottomDialog {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const SizedBox(height: 24),
-                        ClipRRect(
-                          child: Image.asset(
-                            'assets/images/failed.png',
-                            fit: BoxFit.cover,
+                        SizedBox(
+                          height: 176,
+                          child: ClipRRect(
+                            child: Image.asset(
+                              'assets/images/failed.png',
+                              fit: BoxFit.cover,
+                            ),
                           ),
                         ),
                         const SizedBox(height: 20),
@@ -140,7 +155,17 @@ class BottomDialog {
                         Row(
                           children: [
                             Expanded(
-                              child: Title02(text: msg),
+                              child: Text(
+                                msg,
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14,
+                                  fontFamily: AppTheme.fontFamily,
+                                  height: 1.5,
+                                  color: AppTheme.gray,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ],
                         ),

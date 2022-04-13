@@ -124,17 +124,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               child: GestureDetector(
                 onTap: () {
-                  setState(() {
-                    _isLoading = true;
-                  });
-                  _saveInfo(
-                    _emailController.text,
-                    _passController.text,
-                    _passAgainController.text,
-                  );
-                  setState(() {
-                    _isLoading = false;
-                  });
+                  if (_emailController.text.isNotEmpty &&
+                      _passController.text.isNotEmpty &&
+                      _passAgainController.text.isNotEmpty) {
+                    setState(() {
+                      _isLoading = true;
+                    });
+                    _saveInfo(
+                      _emailController.text,
+                      _passController.text,
+                      _passAgainController.text,
+                    );
+                    setState(() {
+                      _isLoading = false;
+                    });
+                  } else {
+                    BottomDialog.showFailed(
+                      context,
+                      'Action Failed',
+                      'Please fill up all forms to continue',
+                    );
+                  }
                 },
                 child: MainButton(
                   text: 'Sign in',
