@@ -51,6 +51,7 @@ class _TextField01State extends State<TextField01> {
           textAlignVertical: TextAlignVertical.center,
           cursorColor: AppTheme.blue,
           enableInteractiveSelection: true,
+          obscureText: obscure,
           style: const TextStyle(
             fontFamily: AppTheme.fontFamily,
             fontSize: 14,
@@ -77,8 +78,8 @@ class _TextField01State extends State<TextField01> {
                     child: Padding(
                       padding: const EdgeInsets.only(
                         left: 24,
-                        top: 10,
-                        bottom: 10,
+                        top: 12,
+                        bottom: 12,
                       ),
                       child: obscure == false
                           ? SvgPicture.asset(
@@ -91,7 +92,7 @@ class _TextField01State extends State<TextField01> {
                             ),
                     ),
                   )
-                : Container(),
+                : const SizedBox(width: 16),
           ),
         ),
       ),
