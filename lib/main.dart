@@ -6,6 +6,7 @@ bool isLoginPage = false;
 String token = "";
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
         platform: TargetPlatform.iOS,
         colorScheme: ColorScheme.fromSwatch().copyWith(
           secondary: const Color(0xFF818C99),
+          brightness: Brightness.dark,
         ),
       ),
       builder: (BuildContext context, Widget? child) {

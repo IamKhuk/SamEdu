@@ -42,7 +42,6 @@ class _TextField01State extends State<TextField01> {
         padding: const EdgeInsets.only(
           left: 16,
           right: 16,
-          top: 2,
         ),
         child: TextField(
           enabled: true,
@@ -77,7 +76,7 @@ class _TextField01State extends State<TextField01> {
                       });
                     },
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 12),
+                      padding: const EdgeInsets.symmetric(vertical: 4),
                       child: obscure == false
                           ? SvgPicture.asset(
                               'assets/icons/eye.svg',
@@ -85,7 +84,7 @@ class _TextField01State extends State<TextField01> {
                             )
                           : SvgPicture.asset(
                               'assets/ions/eye_closed.svg',
-                              color: AppTheme.dark,
+                              color: AppTheme.blue,
                             ),
                     ),
                   )

@@ -28,6 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppTheme.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -156,8 +157,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
   ) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    if (Utils.emailValidator(_emailController.text) == true) {
-      if (Utils.passwordValidator(_passController.text) == true) {
+    if (Utils.emailValidator(
+          _emailController.text.replaceAll(
+            ' ',
+            '',
+          ),
+        ) ==
+        true) {
+      if (Utils.passwordValidator(
+            _passController.text.replaceAll(
+              ' ',
+              '',
+            ),
+          ) ==
+          true) {
         if (_passController.text == _passAgainController.text) {
           prefs.setString("email", e);
           prefs.setString("password", pas);

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:samedu/src/ui/auth/login_screen.dart';
 
 import '../../theme/app_theme.dart';
-import '../menu/main_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
@@ -15,9 +15,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   bool isLoading = false;
   final PageController _pageController = PageController();
   final List<String> _images = [
-    "assets/images/onboarding_01.svg",
-    "assets/images/onboarding_02.svg",
-    "assets/images/onboarding_03.svg",
+    "assets/images/onboarding_01.png",
+    "assets/images/onboarding_02.png",
+    "assets/images/onboarding_03.png",
   ];
   int _selectedIndex = 0;
   List<String> title = [
@@ -99,8 +99,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                                 ],
                               )
                             : const SizedBox(height: 24),
-                        SvgPicture.asset(
-                          _images[index],
+                        ClipRRect(
+                          child: Image.asset(
+                            _images[index],
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ],
                     ),
@@ -207,7 +210,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) {
-                                  return const MainScreen();
+                                  return const LoginScreen();
                                 },
                               ),
                             );

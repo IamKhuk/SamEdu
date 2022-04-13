@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:samedu/src/widgets/button/main_button.dart';
 import 'package:samedu/src/widgets/title/title_02.dart';
 
@@ -37,7 +36,7 @@ class BottomDialog {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const SizedBox(height: 24),
-                        SvgPicture.asset('assets/images/success.svg'),
+                        Image.asset('assets/images/success.png'),
                         const SizedBox(height: 20),
                         const Text(
                           'Good Job!',
@@ -109,7 +108,7 @@ class BottomDialog {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const SizedBox(height: 24),
-                        SvgPicture.asset('assets/images/failed.svg'),
+                        Image.asset('assets/images/failed.png'),
                         const SizedBox(height: 20),
                         Text(
                           title,

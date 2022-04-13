@@ -36,11 +36,15 @@ class _MainScreenState extends State<MainScreen> {
             bottom: 0,
             child: Container(
               height: 56,
-              width: size.width,
+              width: size.width-48,
+              decoration: BoxDecoration(
+                color: AppTheme.white,
+                borderRadius: BorderRadius.circular(56),
+              ),
               margin: const EdgeInsets.only(
-                left: 36,
+                left: 24,
                 bottom: 24,
-                right: 36,
+                right: 24,
               ),
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Row(
@@ -66,19 +70,18 @@ class _MainScreenState extends State<MainScreen> {
                           ),
                           selectedIndex == 0
                               ? Column(
-                            children: [
-                              const SizedBox(height: 4),
-                              Container(
-                                height: 6,
-                                width: 6,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                  BorderRadius.circular(6),
-                                  color: AppTheme.blue,
-                                ),
-                              ),
-                            ],
-                          )
+                                  children: [
+                                    const SizedBox(height: 4),
+                                    Container(
+                                      height: 6,
+                                      width: 6,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(6),
+                                        color: AppTheme.blue,
+                                      ),
+                                    ),
+                                  ],
+                                )
                               : Container(),
                         ],
                       ),
@@ -103,19 +106,18 @@ class _MainScreenState extends State<MainScreen> {
                           ),
                           selectedIndex == 1
                               ? Column(
-                            children: [
-                              const SizedBox(height: 4),
-                              Container(
-                                height: 6,
-                                width: 6,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                  BorderRadius.circular(6),
-                                  color: AppTheme.blue,
-                                ),
-                              ),
-                            ],
-                          )
+                                  children: [
+                                    const SizedBox(height: 4),
+                                    Container(
+                                      height: 6,
+                                      width: 6,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(6),
+                                        color: AppTheme.blue,
+                                      ),
+                                    ),
+                                  ],
+                                )
                               : Container(),
                         ],
                       ),
@@ -133,26 +135,25 @@ class _MainScreenState extends State<MainScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SvgPicture.asset(
-                            'assets/icons/message.svg',
+                            'assets/icons/news.svg',
                             color: selectedIndex == 2
                                 ? AppTheme.blue
                                 : AppTheme.lightTwo,
                           ),
                           selectedIndex == 2
                               ? Column(
-                            children: [
-                              const SizedBox(height: 4),
-                              Container(
-                                height: 6,
-                                width: 6,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                  BorderRadius.circular(6),
-                                  color: AppTheme.blue,
-                                ),
-                              ),
-                            ],
-                          )
+                                  children: [
+                                    const SizedBox(height: 4),
+                                    Container(
+                                      height: 6,
+                                      width: 6,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(6),
+                                        color: AppTheme.blue,
+                                      ),
+                                    ),
+                                  ],
+                                )
                               : Container(),
                         ],
                       ),
@@ -170,26 +171,25 @@ class _MainScreenState extends State<MainScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           SvgPicture.asset(
-                            'assets/icons/account.svg',
+                            'assets/icons/profile.svg',
                             color: selectedIndex == 3
                                 ? AppTheme.blue
                                 : AppTheme.lightTwo,
                           ),
                           selectedIndex == 3
                               ? Column(
-                            children: [
-                              const SizedBox(height: 4),
-                              Container(
-                                height: 6,
-                                width: 6,
-                                decoration: BoxDecoration(
-                                  borderRadius:
-                                  BorderRadius.circular(6),
-                                  color: AppTheme.blue,
-                                ),
-                              ),
-                            ],
-                          )
+                                  children: [
+                                    const SizedBox(height: 4),
+                                    Container(
+                                      height: 6,
+                                      width: 6,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(6),
+                                        color: AppTheme.blue,
+                                      ),
+                                    ),
+                                  ],
+                                )
                               : Container(),
                         ],
                       ),
