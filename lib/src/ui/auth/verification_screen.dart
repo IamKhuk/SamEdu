@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pinput/pin_put/pin_put.dart';
+import 'package:samedu/src/ui/menu/home/basic_screen.dart';
 import 'package:samedu/src/widgets/button/main_button.dart';
 import '../../theme/app_theme.dart';
 import 'login_screen.dart';
@@ -248,7 +249,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return const LoginScreen();
+                        return const BasicScreen();
                       },
                     ),
                   );
@@ -289,7 +290,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
       context,
       MaterialPageRoute(
         builder: (context) {
-          return const LoginScreen();
+          return const BasicScreen();
         },
       ),
     );

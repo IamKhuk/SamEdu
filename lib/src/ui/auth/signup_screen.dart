@@ -80,7 +80,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 shrinkWrap: true,
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 children: [
-                  const SizedBox(height: 72),
+                  const SizedBox(height: 30),
                   const Text(
                     'Welcome to\nSamEdu',
                     style: TextStyle(

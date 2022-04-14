@@ -92,7 +92,7 @@ class _TextField01State extends State<TextField01> {
                             ),
                     ),
                   )
-                : const SizedBox(width: 16),
+                : const SizedBox(width: 1),
           ),
         ),
       ),

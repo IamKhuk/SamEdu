@@ -205,4 +205,101 @@ class BottomDialog {
       },
     );
   }
+
+  static void showDateTime(
+      BuildContext context,
+      Function(DateTime data) onChoose,
+      DateTime initDate,
+      ) {
+    DateTime chooseDate = initDate;
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (context) {
+        return Container(
+          height: 400,
+          decoration: const BoxDecoration(
+            color: AppTheme.white,
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(24),
+              topLeft: Radius.circular(24),
+            ),
+          ),
+          child: Column(
+            children: [
+              const SizedBox(height: 8),
+              Container(
+                height: 4,
+                width: 48,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(4),
+                  color: AppTheme.gray,
+                ),
+              ),
+              const SizedBox(height: 12),
+              Text(
+                "Birth Day",
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                  fontFamily: AppTheme.fontFamily,
+                  height: 1.5,
+                  color: AppTheme.black,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              Expanded(
+                child: DatePicker(
+                  maximumDate: DateTime.now(),
+                  minimumDate: DateTime(1900, 02, 16),
+                  initialDateTime: initDate,
+                  onDateTimeChanged: (_date) {
+                    chooseDate = _date;
+                  },
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.pop(context);
+                  onChoose(chooseDate);
+                },
+                child: Container(
+                  height: 56,
+                  margin: EdgeInsets.only(
+                    left: 36,
+                    right: 36,
+                    bottom: 24,
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    color: AppTheme.purple,
+                    boxShadow: [
+                      BoxShadow(
+                        offset: Offset(5, 9),
+                        blurRadius: 15,
+                        spreadRadius: 0,
+                        color: AppTheme.gray,
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Choose',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 16,
+                        fontFamily: AppTheme.fontFamily,
+                        height: 1.5,
+                        color: AppTheme.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 }
