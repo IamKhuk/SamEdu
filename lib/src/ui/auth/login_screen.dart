@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:samedu/src/dialog/bottom_dialog.dart';
 import 'package:samedu/src/ui/auth/signup_screen.dart';
+import 'package:samedu/src/ui/menu/home/welcome_screen.dart';
 import 'package:samedu/src/widgets/button/main_button.dart';
 import 'package:samedu/src/widgets/text_field/text_field_01.dart';
 import 'package:samedu/src/widgets/title/title_02.dart';
@@ -177,16 +178,28 @@ class _LoginScreenState extends State<LoginScreen> {
     SharedPreferences vr = await SharedPreferences.getInstance();
     String email = vr.getString("email") ?? "";
     String password = vr.getString("password") ?? "";
+    bool isWelcome = vr.getBool('isWelcome') ?? true;
 
     if (e == email && password == pass) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return const MainScreen();
-          },
-        ),
-      );
+      if(isWelcome == false){
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return const MainScreen();
+            },
+          ),
+        );
+      }else{
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return const WelcomeScreen();
+            },
+          ),
+        );
+      }
     } else {
       BottomDialog.showFailed(
         context,

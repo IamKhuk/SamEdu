@@ -50,12 +50,12 @@ class _SplashScreenState extends State<SplashScreen>
             children: [
               SvgPicture.asset(
                 'assets/icons/splash_up.svg',
-                color: AppTheme.gray.withOpacity(0.3),
+                color: AppTheme.light.withOpacity(0.7),
               ),
               const Spacer(),
               SvgPicture.asset(
                 'assets/icons/splash_down.svg',
-                color: AppTheme.gray.withOpacity(0.3),
+                color: AppTheme.light.withOpacity(0.7),
               ),
             ],
           ),
