@@ -4,11 +4,9 @@ import 'package:samedu/src/ui/auth/login_screen.dart';
 import 'package:samedu/src/widgets/title/title_02.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
-
 import '../../../dialog/bottom_dialog.dart';
 import '../../../theme/app_theme.dart';
 import '../../../widgets/button/main_button.dart';
-import '../../../widgets/text_field/text_field_01.dart';
 
 class BasicScreen extends StatefulWidget {
   const BasicScreen({Key? key}) : super(key: key);
@@ -69,25 +67,113 @@ class _BasicScreenState extends State<BasicScreen> {
                   Row(
                     children: [
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Title02(text: 'First name'),
                           const SizedBox(height: 12),
-                          TextField01(
-                            controller: _firstNameController,
-                            hint: 'Your email',
-                            pass: false,
+                          Container(
+                            height: 44,
+                            width: (MediaQuery.of(context).size.width - 64)/2,
+                            decoration: BoxDecoration(
+                              color: AppTheme.lightTwo,
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: [
+                                BoxShadow(
+                                  offset: const Offset(0, 7),
+                                  blurRadius: 55,
+                                  spreadRadius: 0,
+                                  color: const Color(0xFF939393).withOpacity(0.07),
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 16,
+                                right: 16,
+                              ),
+                              child: TextFormField(
+                                enabled: true,
+                                controller: _firstNameController,
+                                enableSuggestions: true,
+                                textAlignVertical: TextAlignVertical.center,
+                                cursorColor: AppTheme.blue,
+                                enableInteractiveSelection: true,
+                                obscureText: false,
+                                style: const TextStyle(
+                                  fontFamily: AppTheme.fontFamily,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                  color: AppTheme.dark,
+                                ),
+                                autofocus: false,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: 'Your first name',
+                                  hintStyle: TextStyle(
+                                    fontFamily: AppTheme.fontFamily,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppTheme.light,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
                       const SizedBox(width: 16),
                       Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Title02(text: 'Last name'),
                           const SizedBox(height: 12),
-                          TextField01(
-                            controller: _lastNameController,
-                            hint: 'Your email',
-                            pass: false,
+                          Container(
+                            height: 44,
+                            width: (MediaQuery.of(context).size.width - 64)/2,
+                            decoration: BoxDecoration(
+                              color: AppTheme.lightTwo,
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: [
+                                BoxShadow(
+                                  offset: const Offset(0, 7),
+                                  blurRadius: 55,
+                                  spreadRadius: 0,
+                                  color: const Color(0xFF939393).withOpacity(0.07),
+                                ),
+                              ],
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                left: 16,
+                                right: 16,
+                              ),
+                              child: TextFormField(
+                                enabled: true,
+                                controller: _lastNameController,
+                                enableSuggestions: true,
+                                textAlignVertical: TextAlignVertical.center,
+                                cursorColor: AppTheme.blue,
+                                enableInteractiveSelection: true,
+                                obscureText: false,
+                                style: const TextStyle(
+                                  fontFamily: AppTheme.fontFamily,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.normal,
+                                  color: AppTheme.dark,
+                                ),
+                                autofocus: false,
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: 'Your last name',
+                                  hintStyle: TextStyle(
+                                    fontFamily: AppTheme.fontFamily,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w500,
+                                    color: AppTheme.light,
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -111,10 +197,10 @@ class _BasicScreenState extends State<BasicScreen> {
                     child: Container(
                       height: 44,
                       width: MediaQuery.of(context).size.width - 32,
-                      padding: const EdgeInsets.all(16),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
-                        color: AppTheme.white,
+                        color: AppTheme.lightTwo,
                         boxShadow: [
                           BoxShadow(
                             offset: const Offset(0, 10),

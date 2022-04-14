@@ -15,11 +15,17 @@ class WelcomeScreen extends StatefulWidget {
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
+  void initState() {
+    _nextScreen();
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppTheme.blue,
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
               'Welcome to\nSamEdu',
@@ -50,6 +56,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   _nextScreen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool('isWelcome', false);
 
     Timer(
       const Duration(milliseconds: 2270),

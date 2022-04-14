@@ -176,8 +176,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     String pasAgain,
   ) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String email = _emailController.text.replaceAll(' ', '');
-    String password = _passController.text.replaceAll(' ', '');
+    String email = e.replaceAll(' ', '');
+    String password = pas.replaceAll(' ', '');
 
     if (Utils.emailValidator(
           email,
@@ -187,7 +187,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
         if (password == _passAgainController.text) {
           prefs.setString("email", e);
           prefs.setString("password", pas);
-          prefs.setString("password", pasAgain);
           Navigator.push(
             context,
             MaterialPageRoute(
