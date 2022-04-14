@@ -210,6 +210,7 @@ class _BasicScreenState extends State<BasicScreen> {
       prefs.setString('firstName', firstName);
       prefs.setString('lastName', lastName);
       prefs.setString('birthDate', date);
+      prefs.setBool('isWelcome', true);
       Navigator.popUntil(context, (route) => route.isFirst);
       Navigator.pushReplacement(
         context,

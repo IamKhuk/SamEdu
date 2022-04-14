@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:samedu/src/widgets/button/main_button.dart';
 
 import '../theme/app_theme.dart';
+import '../widgets/picker/custom_date_picker.dart';
 
 class BottomDialog {
   static void showSuccess(BuildContext context) {
@@ -237,14 +238,14 @@ class BottomDialog {
                 ),
               ),
               const SizedBox(height: 12),
-              Text(
+              const Text(
                 "Birth Day",
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 18,
                   fontFamily: AppTheme.fontFamily,
                   height: 1.5,
-                  color: AppTheme.black,
+                  color: AppTheme.dark,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -265,24 +266,24 @@ class BottomDialog {
                 },
                 child: Container(
                   height: 56,
-                  margin: EdgeInsets.only(
+                  margin: const EdgeInsets.only(
                     left: 36,
                     right: 36,
                     bottom: 24,
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(16),
-                    color: AppTheme.purple,
-                    boxShadow: [
+                    color: AppTheme.blue,
+                    boxShadow: const [
                       BoxShadow(
                         offset: Offset(5, 9),
                         blurRadius: 15,
                         spreadRadius: 0,
-                        color: AppTheme.gray,
+                        color: AppTheme.light,
                       ),
                     ],
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       'Choose',
                       style: TextStyle(
