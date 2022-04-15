@@ -158,7 +158,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         fontSize: 14,
                                         fontWeight: FontWeight.normal,
                                         height: 1.5,
-                                        color: AppTheme.dark,
+                                        color: AppTheme.orange,
                                       ),
                                     ),
                                   ],
@@ -172,7 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         schedule.subject,
                                         style: const TextStyle(
                                           fontWeight: FontWeight.bold,
-                                          fontSize: 28,
+                                          fontSize: 22,
                                           fontFamily: AppTheme.fontFamily,
                                           height: 1.5,
                                           color: AppTheme.blue,
@@ -184,30 +184,47 @@ class _HomeScreenState extends State<HomeScreen> {
                                 const SizedBox(height: 8),
                                 Row(
                                   children: [
-                                    Container(
-                                      height: 28,
-                                      width: 28,
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: AppTheme.lightTwo,
-                                      ),
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(28),
-                                        child: Image.asset(
-                                          schedule.teacher.avatar,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(width: 16),
-                                    Text(
-                                      schedule.teacher.fullName,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w300,
+                                    const Text(
+                                      'Teacher:  ',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w500,
                                         fontSize: 12,
                                         fontFamily: AppTheme.fontFamily,
                                         height: 1.5,
-                                        color: AppTheme.blue,
+                                        color: AppTheme.dark,
+                                      ),
+                                    ),
+                                    Container(
+                                      color: Colors.transparent,
+                                      child: Row(
+                                        children: [
+                                          Container(
+                                            height: 28,
+                                            width: 28,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: AppTheme.lightTwo,
+                                            ),
+                                            child: ClipRRect(
+                                              borderRadius: BorderRadius.circular(28),
+                                              child: Image.asset(
+                                                schedule.teacher.avatar,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
+                                          const SizedBox(width: 16),
+                                          Text(
+                                            schedule.teacher.fullName,
+                                            style: const TextStyle(
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 12,
+                                              fontFamily: AppTheme.fontFamily,
+                                              height: 1.5,
+                                              color: AppTheme.blue,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],

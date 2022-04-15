@@ -134,7 +134,7 @@ class _SplashScreenState extends State<SplashScreen>
       prefs.setString("firstOpen", "value");
       isLoginPage = false;
     }
-    token = prefs.getString('token') ?? "";
+    token = prefs.getString('firstName') ?? "";
 
     Timer(
       const Duration(milliseconds: 2270),

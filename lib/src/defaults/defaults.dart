@@ -13,7 +13,7 @@ class Defaults {
         room: 'P1',
         teacher: TeacherModel(
           fullName: 'Jo\'raqulov Abdulla',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
       ScheduleModel(
@@ -24,7 +24,7 @@ class Defaults {
         room: 'P1',
         teacher: TeacherModel(
           fullName: 'Kuliyev Komil',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
       ScheduleModel(
@@ -35,7 +35,7 @@ class Defaults {
         room: '509',
         teacher: TeacherModel(
           fullName: 'Christopher',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
     ],
@@ -48,7 +48,7 @@ class Defaults {
         room: '509',
         teacher: TeacherModel(
           fullName: 'Christo Ananth',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
       ScheduleModel(
@@ -59,7 +59,7 @@ class Defaults {
         room: '509',
         teacher: TeacherModel(
           fullName: 'Christo Ananth',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
       ScheduleModel(
@@ -70,7 +70,7 @@ class Defaults {
         room: '509',
         teacher: TeacherModel(
           fullName: 'Kenjayev Sanjar',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
     ],
@@ -83,7 +83,7 @@ class Defaults {
         room: 'P1',
         teacher: TeacherModel(
           fullName: 'Shodiyev Usmon',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
       ScheduleModel(
@@ -94,7 +94,7 @@ class Defaults {
         room: 'P1',
         teacher: TeacherModel(
           fullName: 'Kuliyev Komil',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
       ScheduleModel(
@@ -105,7 +105,7 @@ class Defaults {
         room: '509',
         teacher: TeacherModel(
           fullName: 'Parmonov Bekhruz',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
     ],
@@ -118,7 +118,7 @@ class Defaults {
         room: '310',
         teacher: TeacherModel(
           fullName: 'Kenjayev Sanjar',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
       ScheduleModel(
@@ -129,7 +129,7 @@ class Defaults {
         room: 'P1',
         teacher: TeacherModel(
           fullName: 'Christo Ananth',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
       ScheduleModel(
@@ -140,7 +140,7 @@ class Defaults {
         room: '509',
         teacher: TeacherModel(
           fullName: 'Nurmamatov Bahrom',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
     ],
@@ -153,7 +153,7 @@ class Defaults {
         room: '509',
         teacher: TeacherModel(
           fullName: '',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
       ScheduleModel(
@@ -164,7 +164,7 @@ class Defaults {
         room: '509',
         teacher: TeacherModel(
           fullName: '',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
       ScheduleModel(
@@ -175,7 +175,7 @@ class Defaults {
         room: '509',
         teacher: TeacherModel(
           fullName: '',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
     ],
@@ -188,7 +188,7 @@ class Defaults {
         room: '509',
         teacher: TeacherModel(
           fullName: 'Christo Ananth',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
       ScheduleModel(
@@ -199,7 +199,7 @@ class Defaults {
         room: 'P1',
         teacher: TeacherModel(
           fullName: 'Christo Ananth',
-          avatar: '',
+          avatar: 'assets/images/teacher_01.jpg',
         ),
       ),
     ],
