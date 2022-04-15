@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:samedu/src/defaults/defaults.dart';
@@ -20,10 +19,19 @@ class _HomeScreenState extends State<HomeScreen> {
   String firstName = 'Khusan';
   String lastName = 'Khukumov';
   late ScheduleModel schedule;
+  late String lessonStatus;
 
   @override
   void initState() {
-    schedule = Defaults().schedules[DateTime.now().weekday - 1][0];
+    schedule = Defaults().schedules[DateTime.now().weekday - 1].firstWhere(
+      (element) {
+        int hour = int.parse(element.end.split(':').toList()[0]);
+        return DateTime.now().hour <= hour;
+      },
+    );
+    DateTime.now().hour < int.parse(schedule.end.split(':').toList()[0])
+        ? lessonStatus = 'Upcoming'
+        : lessonStatus = 'Ongoing';
     super.initState();
   }
 
@@ -144,9 +152,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    const Text(
-                                      'Ongoing Lesson',
-                                      style: TextStyle(
+                                    Text(
+                                      lessonStatus+' Lesson',
+                                      style: const TextStyle(
                                         fontFamily: AppTheme.fontFamily,
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500,
