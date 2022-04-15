@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:samedu/src/widgets/button/main_button.dart';
 
 import '../theme/app_theme.dart';
@@ -208,10 +209,10 @@ class BottomDialog {
   }
 
   static void showDateTime(
-      BuildContext context,
-      Function(DateTime data) onChoose,
-      DateTime initDate,
-      ) {
+    BuildContext context,
+    Function(DateTime data) onChoose,
+    DateTime initDate,
+  ) {
     DateTime chooseDate = initDate;
     showModalBottomSheet(
       context: context,
@@ -299,6 +300,85 @@ class BottomDialog {
               ),
             ],
           ),
+        );
+      },
+    );
+  }
+
+  static void showAvatar(
+    BuildContext context,
+    String avatar,
+  ) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      barrierColor: AppTheme.dark.withOpacity(0.5),
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            return SizedBox(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 350,
+                    child: Stack(
+                      alignment: Alignment.topLeft,
+                      children: [
+                        Container(
+                          height: 350,
+                          width: MediaQuery.of(context).size.width - 32,
+                          margin: const EdgeInsets.symmetric(horizontal: 16),
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(22),
+                            color: AppTheme.white,
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: Image.asset(
+                              avatar,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            InkWell(
+                              onTap: () => Navigator.pop(context),
+                              child: Container(
+                                height: 38,
+                                width: 38,
+                                margin: const EdgeInsets.only(
+                                  top: 16,
+                                  right: 32,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: AppTheme.white.withOpacity(0.5),
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Center(
+                                  child: SvgPicture.asset(
+                                    'assets/icons/cancel.svg',
+                                    height: 20,
+                                    width: 20,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
         );
       },
     );

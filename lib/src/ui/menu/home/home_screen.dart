@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:samedu/src/defaults/defaults.dart';
+import 'package:samedu/src/dialog/bottom_dialog.dart';
 import 'package:samedu/src/model/schedule_model.dart';
 import 'package:samedu/src/theme/app_theme.dart';
 import 'package:samedu/src/widgets/title/title_01.dart';
@@ -139,7 +141,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     const Text(
                                       'Ongoing Lesson',
@@ -194,37 +197,44 @@ class _HomeScreenState extends State<HomeScreen> {
                                         color: AppTheme.dark,
                                       ),
                                     ),
-                                    Container(
-                                      color: Colors.transparent,
-                                      child: Row(
-                                        children: [
-                                          Container(
-                                            height: 28,
-                                            width: 28,
-                                            decoration: const BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: AppTheme.lightTwo,
-                                            ),
-                                            child: ClipRRect(
-                                              borderRadius: BorderRadius.circular(28),
-                                              child: Image.asset(
-                                                schedule.teacher.avatar,
-                                                fit: BoxFit.cover,
+                                    GestureDetector(
+                                      onTap: () => BottomDialog.showAvatar(
+                                        context,
+                                        schedule.teacher.avatar,
+                                      ),
+                                      child: Container(
+                                        color: Colors.transparent,
+                                        child: Row(
+                                          children: [
+                                            Container(
+                                              height: 28,
+                                              width: 28,
+                                              decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: AppTheme.lightTwo,
+                                              ),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(28),
+                                                child: Image.asset(
+                                                  schedule.teacher.avatar,
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
                                             ),
-                                          ),
-                                          const SizedBox(width: 16),
-                                          Text(
-                                            schedule.teacher.fullName,
-                                            style: const TextStyle(
-                                              fontWeight: FontWeight.w300,
-                                              fontSize: 12,
-                                              fontFamily: AppTheme.fontFamily,
-                                              height: 1.5,
-                                              color: AppTheme.blue,
+                                            const SizedBox(width: 16),
+                                            Text(
+                                              schedule.teacher.fullName,
+                                              style: const TextStyle(
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: 12,
+                                                fontFamily: AppTheme.fontFamily,
+                                                height: 1.5,
+                                                color: AppTheme.blue,
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -310,7 +320,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ),
                                           decoration: BoxDecoration(
                                             color: AppTheme.white,
-                                            borderRadius: BorderRadius.circular(20),
+                                            borderRadius:
+                                                BorderRadius.circular(20),
                                           ),
                                           child: Text(
                                             item.title,
