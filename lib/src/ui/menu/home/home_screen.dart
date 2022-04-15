@@ -23,15 +23,29 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void initState() {
-    schedule = Defaults().schedules[DateTime.now().weekday - 1].firstWhere(
-      (element) {
-        int hour = int.parse(element.end.split(':').toList()[0]);
-        return DateTime.now().hour <= hour;
-      },
-    );
-    DateTime.now().hour < int.parse(schedule.end.split(':').toList()[0])
-        ? lessonStatus = 'Upcoming'
-        : lessonStatus = 'Ongoing';
+    if (DateTime.now().hour <=
+        int.parse(Defaults()
+            .schedules[DateTime.now().weekday - 1]
+            .last
+            .end
+            .split(':')
+            .last)) {
+      schedule = Defaults().schedules[DateTime.now().weekday - 1].firstWhere(
+        (element) {
+          int hour = int.parse(element.end.split(':').toList()[0]);
+          return DateTime.now().hour <= hour;
+        },
+      );
+      DateTime.now().hour < int.parse(schedule.end.split(':').toList()[0])
+          ? lessonStatus = 'Upcoming'
+          : lessonStatus = 'Ongoing';
+    } else if (DateTime.now().weekday == 6) {
+      schedule = Defaults().schedules[0].first;
+      lessonStatus = 'Upcoming';
+    } else {
+      schedule = Defaults().schedules[DateTime.now().weekday].first;
+      lessonStatus = 'Upcoming';
+    }
     super.initState();
   }
 
@@ -153,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      lessonStatus+' Lesson',
+                                      lessonStatus + ' Lesson',
                                       style: const TextStyle(
                                         fontFamily: AppTheme.fontFamily,
                                         fontSize: 14,
@@ -196,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Row(
                                   children: [
                                     const Text(
-                                      'Teacher:  ',
+                                      'Teacher:',
                                       style: TextStyle(
                                         fontWeight: FontWeight.w500,
                                         fontSize: 12,
@@ -205,6 +219,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         color: AppTheme.dark,
                                       ),
                                     ),
+                                    const SizedBox(width: 16),
                                     GestureDetector(
                                       onTap: () => BottomDialog.showAvatar(
                                         context,
@@ -230,7 +245,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ),
                                               ),
                                             ),
-                                            const SizedBox(width: 16),
+                                            const SizedBox(width: 8),
                                             Text(
                                               schedule.teacher.fullName,
                                               style: const TextStyle(
