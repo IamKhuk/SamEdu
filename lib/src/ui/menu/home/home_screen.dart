@@ -7,6 +7,7 @@ import 'package:samedu/src/model/schedule_model.dart';
 import 'package:samedu/src/theme/app_theme.dart';
 import 'package:samedu/src/widgets/title/title_01.dart';
 import 'package:samedu/src/widgets/title/view_all.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,13 +17,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String firstName = 'Khusan';
-  String lastName = 'Khukumov';
+  String _firstName = '';
+  String _lastName = '';
+  // String _myImage = '';
   late ScheduleModel schedule;
   late String lessonStatus;
 
   @override
   void initState() {
+    _getInfo();
     if (DateTime.now().hour <=
         int.parse(Defaults()
             .schedules[DateTime.now().weekday - 1]
@@ -116,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               children: [
                                 const SizedBox(width: 24),
                                 Text(
-                                  firstName + ' ' + lastName,
+                                  _firstName + ' ' + _lastName,
                                   style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20,
@@ -267,6 +270,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
+
                       const SizedBox(height: 8),
                       Row(
                         children: const [
@@ -388,5 +392,14 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _getInfo() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      // _myImage = prefs.getString('avatar') ?? '';
+      _firstName = prefs.getString('firstName') ?? 'Unnamed';
+      _lastName = prefs.getString('lastName') ?? '';
+    });
   }
 }
