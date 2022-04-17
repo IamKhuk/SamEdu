@@ -5,6 +5,7 @@ import 'package:samedu/src/defaults/defaults.dart';
 import 'package:samedu/src/dialog/bottom_dialog.dart';
 import 'package:samedu/src/model/schedule_model.dart';
 import 'package:samedu/src/theme/app_theme.dart';
+import 'package:samedu/src/ui/menu/news/news_details_screen.dart';
 import 'package:samedu/src/widgets/title/title_01.dart';
 import 'package:samedu/src/widgets/title/view_all.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -19,6 +20,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String _firstName = '';
   String _lastName = '';
+
   // String _myImage = '';
   late ScheduleModel schedule;
   late String lessonStatus;
@@ -26,7 +28,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     _getInfo();
-    if (DateTime.now().hour <=
+    if(DateTime.now().weekday == 7){
+      schedule = Defaults().schedules[0][0];
+      lessonStatus = 'Upcoming';
+    }
+    else if (DateTime.now().hour <=
         int.parse(Defaults()
             .schedules[DateTime.now().weekday - 1]
             .last
@@ -270,7 +276,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ],
                       ),
-
                       const SizedBox(height: 8),
                       Row(
                         children: const [
@@ -289,17 +294,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           items: Defaults().news.map((item) {
                             return GestureDetector(
                               onTap: () {
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) {
-                                //       return AdviceSingleScreen(
-                                //         index: advices.indexOf(item),
-                                //         title: 'Treatment',
-                                //       );
-                                //     },
-                                //   ),
-                                // );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        NewsDetailsScreen(news: item),
+                                  ),
+                                );
                               },
                               child: Container(
                                 height: 184,
