@@ -6,6 +6,7 @@ import 'package:samedu/src/dialog/bottom_dialog.dart';
 import 'package:samedu/src/model/schedule_model.dart';
 import 'package:samedu/src/theme/app_theme.dart';
 import 'package:samedu/src/ui/menu/news/news_details_screen.dart';
+import 'package:samedu/src/ui/menu/news/news_list_screen.dart';
 import 'package:samedu/src/widgets/news_container.dart';
 import 'package:samedu/src/widgets/title/title_01.dart';
 import 'package:samedu/src/widgets/title/view_all.dart';
@@ -278,12 +279,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       const SizedBox(height: 8),
                       Row(
-                        children: const [
-                          SizedBox(width: 24),
-                          Title01(text: 'News'),
-                          Spacer(),
-                          ViewAll(),
-                          SizedBox(width: 24),
+                        children: [
+                          const SizedBox(width: 24),
+                          const Title01(text: 'News'),
+                          const Spacer(),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      NewsListScreen(news: Defaults().news),
+                                ),
+                              );
+                            },
+                            child: const ViewAll(),
+                          ),
+                          const SizedBox(width: 24),
                         ],
                       ),
                       const SizedBox(height: 16),

@@ -16,6 +16,7 @@ class NewsContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 184,
+      width: MediaQuery.of(context).size.width-92,
       child: Stack(
         children: [
           SizedBox(
