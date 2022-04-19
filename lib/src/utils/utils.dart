@@ -66,18 +66,18 @@ class Utils {
   static String weekFormat(DateTime date) {
     String week = '';
     date.weekday == 1
-        ? week = 'M'
+        ? week = 'Mo'
         : date.weekday == 2
-            ? week = 'T'
+            ? week = 'Tu'
             : date.weekday == 3
                 ? week = 'W'
                 : date.weekday == 4
-                    ? week = 'T'
+                    ? week = 'Th'
                     : date.weekday == 5
-                        ? week = 'F'
+                        ? week = 'Fr'
                         : date.weekday == 6
-                            ? week = 'S'
-                            : week = 'S';
+                            ? week = 'Sa'
+                            : week = 'Su';
     return week;
   }
 
