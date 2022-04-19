@@ -236,25 +236,6 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
                           int ongoing = 0;
-                          if (selectedWeekDay == DateTime.now().weekday) {
-                            if (DateTime.now().hour >= 13) {
-                              ongoing = Defaults()
-                                  .schedules[selectedWeekDay - 1]
-                                  .indexOf(
-                                    Defaults()
-                                        .schedules[selectedWeekDay - 1]
-                                        .firstWhere(
-                                          (element) =>
-                                              int.parse(element.end
-                                                  .split(':')
-                                                  .first) <=
-                                              DateTime.now().hour,
-                                        ),
-                                  );
-                            } else {
-                              ongoing = 0;
-                            }
-                          }
                           return Container(
                             margin: const EdgeInsets.only(top: 24),
                             child: Row(
