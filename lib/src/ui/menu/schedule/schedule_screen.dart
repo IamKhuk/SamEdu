@@ -81,7 +81,6 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                             color: AppTheme.light,
                           ),
                         ),
-                        const SizedBox(height: 4),
                         Text(
                           Utils.monthFormat(dateList.first) +
                               ' ' +
