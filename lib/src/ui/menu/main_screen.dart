@@ -66,7 +66,7 @@ class _MainScreenState extends State<MainScreen> {
                             'assets/icons/home.svg',
                             color: selectedIndex == 0
                                 ? AppTheme.blue
-                                : AppTheme.lightTwo,
+                                : AppTheme.light,
                           ),
                           selectedIndex == 0
                               ? Column(
@@ -102,7 +102,7 @@ class _MainScreenState extends State<MainScreen> {
                             'assets/icons/schedule.svg',
                             color: selectedIndex == 1
                                 ? AppTheme.blue
-                                : AppTheme.lightTwo,
+                                : AppTheme.light,
                           ),
                           selectedIndex == 1
                               ? Column(
@@ -138,7 +138,7 @@ class _MainScreenState extends State<MainScreen> {
                             'assets/icons/news.svg',
                             color: selectedIndex == 2
                                 ? AppTheme.blue
-                                : AppTheme.lightTwo,
+                                : AppTheme.light,
                           ),
                           selectedIndex == 2
                               ? Column(
@@ -174,7 +174,7 @@ class _MainScreenState extends State<MainScreen> {
                             'assets/icons/profile.svg',
                             color: selectedIndex == 3
                                 ? AppTheme.blue
-                                : AppTheme.lightTwo,
+                                : AppTheme.light,
                           ),
                           selectedIndex == 3
                               ? Column(

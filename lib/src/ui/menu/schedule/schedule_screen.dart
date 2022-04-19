@@ -255,7 +255,6 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                               ongoing = 0;
                             }
                           }
-                          print(ongoing);
                           return Container(
                             margin: const EdgeInsets.only(top: 24),
                             child: Row(
