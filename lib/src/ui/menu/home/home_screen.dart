@@ -6,6 +6,7 @@ import 'package:samedu/src/dialog/bottom_dialog.dart';
 import 'package:samedu/src/model/schedule_model.dart';
 import 'package:samedu/src/theme/app_theme.dart';
 import 'package:samedu/src/ui/menu/news/news_details_screen.dart';
+import 'package:samedu/src/widgets/news_container.dart';
 import 'package:samedu/src/widgets/title/title_01.dart';
 import 'package:samedu/src/widgets/title/view_all.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -28,11 +29,10 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     _getInfo();
-    if(DateTime.now().weekday == 7){
+    if (DateTime.now().weekday == 7) {
       schedule = Defaults().schedules[0][0];
       lessonStatus = 'Upcoming';
-    }
-    else if (DateTime.now().hour <=
+    } else if (DateTime.now().hour <=
         int.parse(Defaults()
             .schedules[DateTime.now().weekday - 1]
             .last
@@ -302,74 +302,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ),
                                 );
                               },
-                              child: Container(
-                                height: 184,
-                                margin: const EdgeInsets.only(right: 20),
-                                child: Stack(
-                                  children: [
-                                    SizedBox(
-                                      height: 146,
-                                      width: MediaQuery.of(context).size.width,
-                                      child: ClipRRect(
-                                        borderRadius: BorderRadius.circular(8),
-                                        child: Image.asset(
-                                          item.images[0],
-                                          fit: BoxFit.fitWidth,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 146,
-                                      width: MediaQuery.of(context).size.width,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        gradient: LinearGradient(
-                                          begin: Alignment.bottomCenter,
-                                          end: Alignment.topCenter,
-                                          colors: [
-                                            AppTheme.lightTwo,
-                                            AppTheme.lightTwo.withOpacity(0.7),
-                                            AppTheme.lightTwo.withOpacity(0.4),
-                                            AppTheme.lightTwo.withOpacity(0.1),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Container(
-                                          margin: const EdgeInsets.symmetric(
-                                            horizontal: 16,
-                                          ),
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 16,
-                                            vertical: 12,
-                                          ),
-                                          decoration: BoxDecoration(
-                                            color: AppTheme.white,
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                          ),
-                                          child: Text(
-                                            item.title,
-                                            style: const TextStyle(
-                                              fontFamily: AppTheme.fontFamily,
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                              height: 1.5,
-                                              color: AppTheme.dark,
-                                            ),
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.start,
-                                          ),
-                                        ),
-                                        // const SizedBox(height: 8),
-                                      ],
-                                    )
-                                  ],
-                                ),
+                              child: Row(
+                                children: [
+                                  NewsContainer(
+                                    img: item.images[0],
+                                    title: item.title,
+                                  ),
+                                  const SizedBox(width: 20),
+                                ],
                               ),
                             );
                           }).toList(),
