@@ -34,8 +34,8 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
         title: const Text(
           'Schedule',
           style: TextStyle(
-            fontWeight: FontWeight.w500,
-            fontSize: 14,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
             fontFamily: AppTheme.fontFamily,
             height: 1.5,
             color: AppTheme.dark,
