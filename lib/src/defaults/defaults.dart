@@ -1,3 +1,4 @@
+import 'package:samedu/src/model/lesson_model.dart';
 import 'package:samedu/src/model/news_model.dart';
 import 'package:samedu/src/model/schedule_model.dart';
 import 'package:samedu/src/model/teacher_model.dart';
@@ -231,6 +232,78 @@ class Defaults {
       date: DateTime(2022, 04, 14, 9, 1),
       likes: 12,
       dislikes: 3,
+    ),
+  ];
+
+  List<LessonModel> lessons = [
+    LessonModel(
+      name: 'Object Oriented Programming',
+      teacher: TeacherModel(
+        fullName: 'Christo Ananth',
+        avatar: 'assets/images/teacher_01.jpg',
+      ),
+    ),
+    LessonModel(
+      name: 'Data Structure',
+      teacher: TeacherModel(
+        fullName: 'Christo Ananth',
+        avatar: 'assets/images/teacher_01.jpg',
+      ),
+    ),
+    LessonModel(
+      name: 'Maths Analyses',
+      teacher: TeacherModel(
+        fullName: 'Komil Kuliyev',
+        avatar: 'assets/images/teacher_01.jpg',
+      ),
+    ),
+    LessonModel(
+      name: 'Advanced Programming Practice',
+      teacher: TeacherModel(
+        fullName: 'Kenjayev Sanjar',
+        avatar: 'assets/images/teacher_01.jpg',
+      ),
+    ),
+    LessonModel(
+      name: 'English',
+      teacher: TeacherModel(
+        fullName: 'Christopher',
+        avatar: 'assets/images/teacher_01.jpg',
+      ),
+    ),
+    LessonModel(
+      name: 'Discrete Maths',
+      teacher: TeacherModel(
+        fullName: 'Shodiyev Usmon',
+        avatar: 'assets/images/teacher_01.jpg',
+      ),
+    ),
+  ];
+
+  List<TeacherModel> teachers = [
+    TeacherModel(
+      fullName: 'Christo Ananth',
+      avatar: 'assets/images/teacher_01.jpg',
+    ),
+    TeacherModel(
+      fullName: 'Shodiyev Usmon',
+      avatar: 'assets/images/teacher_01.jpg',
+    ),
+    TeacherModel(
+      fullName: 'Christopher',
+      avatar: 'assets/images/teacher_01.jpg',
+    ),
+    TeacherModel(
+      fullName: 'Kenjayev Sanjar',
+      avatar: 'assets/images/teacher_01.jpg',
+    ),
+    TeacherModel(
+      fullName: 'Komil Kuliyev',
+      avatar: 'assets/images/teacher_01.jpg',
+    ),
+    TeacherModel(
+      fullName: 'Parmonov Bekhruz',
+      avatar: 'assets/images/teacher_01.jpg',
     ),
   ];
 }

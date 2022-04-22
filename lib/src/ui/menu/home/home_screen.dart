@@ -12,6 +12,8 @@ import 'package:samedu/src/widgets/title/title_01.dart';
 import 'package:samedu/src/widgets/title/view_all.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../widgets/drawer/home_drawer.dart';
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -20,6 +22,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
   String _firstName = '';
   String _lastName = '';
 
@@ -70,6 +73,9 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             const SizedBox(width: 24),
             InkWell(
+              onTap: () {
+                _scaffoldKey.currentState?.openDrawer();
+              },
               child: Container(
                 height: 40,
                 width: 40,
@@ -88,6 +94,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+      drawer: HomeDrawer(name: _firstName, email: _lastName, img: '_myImage'),
+      drawerEnableOpenDragGesture: false,
       body: Column(
         children: [
           Expanded(
