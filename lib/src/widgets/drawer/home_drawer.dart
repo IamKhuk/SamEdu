@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:samedu/src/defaults/defaults.dart';
@@ -65,7 +66,7 @@ class HomeDrawer extends StatelessWidget {
                   const SizedBox(height: 24),
                   buildMenuItem(
                     text: 'Support',
-                    icon: 'assets/icons/promo.svg',
+                    icon: 'assets/icons/newest.svg',
                     onClicked: () => selectedItem(context, 3),
                   ),
                   const SizedBox(height: 16),
@@ -103,7 +104,10 @@ class HomeDrawer extends StatelessWidget {
                 width: 60,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
-                  child: Image.asset(img),
+                  child: Image.asset(
+                    img,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
               const SizedBox(width: 20),

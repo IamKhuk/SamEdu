@@ -22,11 +22,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
   String _firstName = '';
   String _lastName = '';
 
-  // String _myImage = '';
+  String myImage = 'assets/images/me.png';
   late ScheduleModel schedule;
   late String lessonStatus;
 
@@ -65,6 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       appBar: AppBar(
         backgroundColor: AppTheme.blue,
         elevation: 0,
@@ -74,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(width: 24),
             InkWell(
               onTap: () {
-                _scaffoldKey.currentState?.openDrawer();
+                scaffoldKey.currentState!.openDrawer();
               },
               child: Container(
                 height: 40,
@@ -94,7 +95,11 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      drawer: HomeDrawer(name: _firstName, email: _lastName, img: '_myImage'),
+      drawer: HomeDrawer(
+        name: _firstName,
+        email: _lastName,
+        img: myImage,
+      ),
       drawerEnableOpenDragGesture: false,
       body: Column(
         children: [
