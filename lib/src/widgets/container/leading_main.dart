@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class LeadingMain extends StatelessWidget {
-  final String svg;
-
-  const LeadingMain({
+class LeadingBack extends StatelessWidget {
+  const LeadingBack({
     Key? key,
-    required this.svg,
   }) : super(key: key);
 
   @override
@@ -23,7 +20,7 @@ class LeadingMain extends StatelessWidget {
           height: 44,
           width: 44,
           child: Center(
-            child: SvgPicture.asset(svg),
+            child: SvgPicture.asset('assets/icons/left.svg'),
           ),
         ),
       ),

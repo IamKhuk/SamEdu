@@ -11,13 +11,16 @@ class SettingsContainer extends StatelessWidget {
     Key? key,
     required this.img,
     required this.title,
-  }):super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 48,
-      padding: const EdgeInsets.symmetric(vertical: 8),
+      height: 56,
+      padding: const EdgeInsets.symmetric(
+        vertical: 8,
+        horizontal: 12,
+      ),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -31,20 +34,13 @@ class SettingsContainer extends StatelessWidget {
         ],
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            height: 32,
-            width: 32,
-            decoration: BoxDecoration(
-              color: AppTheme.gray.withOpacity(0.3),
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Center(
-              child: SvgPicture.asset(
-                img,
-                color: AppTheme.blue,
-              ),
-            ),
+          SvgPicture.asset(
+            img,
+            color: AppTheme.blue,
+            height: 24,
+            width: 24,
           ),
           const SizedBox(width: 12),
           Expanded(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:samedu/src/defaults/defaults.dart';
 import 'package:samedu/src/theme/app_theme.dart';
-import 'package:samedu/src/widgets/container/leading_main.dart';
 import 'package:samedu/src/widgets/container/settings_container.dart';
 import 'package:samedu/src/widgets/title/heading_01.dart';
 import 'package:samedu/src/widgets/title/text_01.dart';
@@ -22,9 +22,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       backgroundColor: AppTheme.bg,
       appBar: AppBar(
+        elevation: 0,
         leadingWidth: 60,
-        leading: const LeadingMain(
-          svg: 'assets/icons/menu_04.svg',
+        leading: Padding(
+          padding: const EdgeInsets.all(8),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(44),
+            onTap: () {
+              // Navigator.pop(context);
+            },
+            child: Container(
+              color: Colors.transparent,
+              height: 44,
+              width: 44,
+              child: Center(
+                child: SvgPicture.asset('assets/icons/menu_04.svg'),
+              ),
+            ),
+          ),
         ),
         title: const Heading01(text: 'Profile'),
         centerTitle: true,
@@ -82,8 +97,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Container(
                         height: 40,
                         width: MediaQuery.of(context).size.width - 214,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           color: AppTheme.blue,
+                          borderRadius: BorderRadius.circular(8),
                         ),
                         child: const Center(
                           child: Title02(
