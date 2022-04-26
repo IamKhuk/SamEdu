@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../defaults/defaults.dart';
+import '../../../dialog/bottom_dialog.dart';
 import '../../../theme/app_theme.dart';
 
 class TeachersScreen extends StatefulWidget {
@@ -73,14 +74,20 @@ class _TeachersScreenState extends State<TeachersScreen> {
                 ),
                 child: Row(
                   children: [
-                    SizedBox(
-                      height: 64,
-                      width: 64,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(64),
-                        child: Image.asset(
-                          Defaults().teachers[index].avatar,
-                          fit: BoxFit.cover,
+                    GestureDetector(
+                      onTap: () => BottomDialog.showAvatar(
+                        context,
+                        Defaults().teachers[index].avatar,
+                      ),
+                      child: SizedBox(
+                        height: 64,
+                        width: 64,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(64),
+                          child: Image.asset(
+                            Defaults().teachers[index].avatar,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),

@@ -9,6 +9,8 @@ import 'package:samedu/src/widgets/title/title_01.dart';
 import 'package:samedu/src/widgets/title/title_02.dart';
 import 'package:samedu/src/widgets/title/view_all.dart';
 
+import '../../../dialog/bottom_dialog.dart';
+
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({Key? key}) : super(key: key);
 
@@ -60,19 +62,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   offset: const Offset(0, 2),
                   blurRadius: 20,
                   spreadRadius: 0,
-                  color: AppTheme.dark.withOpacity(0.4),
+                  color: AppTheme.dark.withOpacity(0.1),
                 ),
               ],
             ),
             child: Row(
               children: [
-                SizedBox(
-                  width: 116,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(8),
-                    child: Image.asset(
-                      'assets/images/me.jpg',
-                      fit: BoxFit.cover,
+                InkWell(
+                  onTap: () => BottomDialog.showAvatar(
+                    context,
+                    Defaults().me.avatar,
+                  ),
+                  child: SizedBox(
+                    width: 116,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.asset(
+                        'assets/images/me.jpg',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
@@ -81,15 +89,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Heading01(
+                    Title01(
                       text: Defaults().me.firstName,
                     ),
                     const SizedBox(height: 4),
-                    Heading01(
+                    Title01(
                       text: Defaults().me.lastName,
                     ),
                     const SizedBox(height: 4),
-                    Text01(text: Defaults().me.bio),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width - 214,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child:
+                                Text01(text: "\"" + Defaults().me.bio + "\""),
+                          ),
+                        ],
+                      ),
+                    ),
                     const SizedBox(height: 12),
                     InkWell(
                       onTap: () {},

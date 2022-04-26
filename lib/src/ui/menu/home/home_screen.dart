@@ -367,7 +367,9 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       // _myImage = prefs.getString('avatar') ?? '';
       _firstName = prefs.getString('firstName') ?? 'Unnamed';
+      Defaults().me.firstName = prefs.getString('firstName') ?? 'Unnamed';
       _lastName = prefs.getString('lastName') ?? '';
+      Defaults().me.lastName = prefs.getString('lastName') ?? '';
     });
   }
 }

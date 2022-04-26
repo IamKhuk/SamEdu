@@ -40,6 +40,14 @@ class _MainScreenState extends State<MainScreen> {
               decoration: BoxDecoration(
                 color: AppTheme.white,
                 borderRadius: BorderRadius.circular(56),
+                boxShadow: [
+                  BoxShadow(
+                    offset: const Offset(0, 2),
+                    blurRadius: 20,
+                    spreadRadius: 0,
+                    color: AppTheme.dark.withOpacity(0.1),
+                  ),
+                ],
               ),
               margin: const EdgeInsets.only(
                 left: 24,
@@ -159,12 +167,13 @@ class _MainScreenState extends State<MainScreen> {
                       ),
                     ),
                   ),
-                  GestureDetector(
+                  InkWell(
                     onTap: () {
                       setState(() {
                         selectedIndex = 3;
                       });
                     },
+                    borderRadius: BorderRadius.circular(36),
                     child: Container(
                       color: Colors.transparent,
                       child: Column(
