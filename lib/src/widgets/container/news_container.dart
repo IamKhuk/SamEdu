@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../theme/app_theme.dart';
+import '../../theme/app_theme.dart';
 
 class NewsContainer extends StatelessWidget {
   final String img;

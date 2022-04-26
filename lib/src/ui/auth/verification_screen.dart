@@ -7,7 +7,6 @@ import 'package:pinput/pin_put/pin_put.dart';
 import 'package:samedu/src/ui/menu/home/basic_screen.dart';
 import 'package:samedu/src/widgets/button/main_button.dart';
 import '../../theme/app_theme.dart';
-import 'login_screen.dart';
 
 class VerificationScreen extends StatefulWidget {
   final String email;

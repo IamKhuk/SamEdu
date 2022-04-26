@@ -164,10 +164,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         color: AppTheme.blue,
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

@@ -7,7 +7,7 @@ import 'package:samedu/src/model/schedule_model.dart';
 import 'package:samedu/src/theme/app_theme.dart';
 import 'package:samedu/src/ui/menu/news/news_details_screen.dart';
 import 'package:samedu/src/ui/menu/news/news_list_screen.dart';
-import 'package:samedu/src/widgets/news_container.dart';
+import 'package:samedu/src/widgets/container/news_container.dart';
 import 'package:samedu/src/widgets/title/title_01.dart';
 import 'package:samedu/src/widgets/title/view_all.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -74,12 +74,14 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             const SizedBox(width: 24),
             InkWell(
+              borderRadius: BorderRadius.circular(40),
               onTap: () {
                 scaffoldKey.currentState!.openDrawer();
               },
               child: Container(
                 height: 40,
                 width: 40,
+                color: Colors.transparent,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),
                 ),

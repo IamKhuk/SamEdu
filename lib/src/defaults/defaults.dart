@@ -1,4 +1,5 @@
 import 'package:samedu/src/model/lesson_model.dart';
+import 'package:samedu/src/model/me_model.dart';
 import 'package:samedu/src/model/news_model.dart';
 import 'package:samedu/src/model/schedule_model.dart';
 import 'package:samedu/src/model/teacher_model.dart';
@@ -306,4 +307,13 @@ class Defaults {
       avatar: 'assets/images/teacher_01.jpg',
     ),
   ];
+
+  MeModel me = MeModel(
+    firstName: 'Unnamed',
+    lastName: '',
+    bio: 'Live with our passion',
+    email: 'email',
+    birthDate: 'birthDate',
+    gender: 'male',
+  );
 }
