@@ -8,6 +8,7 @@ import 'package:samedu/src/widgets/title/text_01.dart';
 import 'package:samedu/src/widgets/title/title_01.dart';
 import 'package:samedu/src/widgets/title/title_02.dart';
 import 'package:samedu/src/widgets/title/view_all.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../dialog/bottom_dialog.dart';
 
@@ -19,6 +20,14 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  String _firstName = '';
+  String _lastName = '';
+
+  @override
+  void initState() {
+    _getInfo();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,11 +99,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Title01(
-                      text: Defaults().me.firstName,
+                      text: _firstName,
                     ),
                     const SizedBox(height: 4),
                     Title01(
-                      text: Defaults().me.lastName,
+                      text: _lastName,
                     ),
                     const SizedBox(height: 4),
                     SizedBox(
@@ -167,5 +176,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
         ],
       ),
     );
+  }
+
+  Future<void> _getInfo() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      // _myImage = prefs.getString('avatar') ?? '';
+      _firstName = prefs.getString('firstName') ?? 'Unnamed';
+      _lastName = prefs.getString('lastName') ?? '';
+    });
   }
 }

@@ -127,58 +127,66 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
             child: ListView.builder(
               itemCount: dateList.length,
               scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.only(left: 16),
               itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      selectedDate = index;
-                      selectedWeekDay = dateList[index].weekday;
-                    });
-                  },
-                  child: Container(
-                    height: 60,
-                    width: (MediaQuery.of(context).size.width - 120) / 7,
-                    margin: const EdgeInsets.symmetric(horizontal: 12),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: selectedDate == index
-                          ? AppTheme.blue
-                          : Colors.transparent,
-                    ),
-                    child: Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            Utils.weekFormat(dateList[index]),
-                            style: TextStyle(
-                              fontFamily: AppTheme.fontFamily,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              height: 1.5,
-                              color: selectedDate == index
-                                  ? AppTheme.white
-                                  : AppTheme.light,
-                            ),
+                return Row(
+                  children: [
+                    InkWell(
+                      borderRadius: BorderRadius.circular(12),
+                      onTap: () {
+                        setState(() {
+                          selectedDate = index;
+                          selectedWeekDay = dateList[index].weekday;
+                        });
+                      },
+                      child: Container(
+                        height: 60,
+                        width: (MediaQuery.of(context).size.width - 120) / 7,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: selectedDate == index
+                              ? AppTheme.blue
+                              : Colors.transparent,
+                        ),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                Utils.weekFormat(dateList[index]),
+                                style: TextStyle(
+                                  fontFamily: AppTheme.fontFamily,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.5,
+                                  color: selectedDate == index
+                                      ? AppTheme.white
+                                      : AppTheme.light,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                dateList[index].day.toString(),
+                                style: TextStyle(
+                                  fontFamily: AppTheme.fontFamily,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500,
+                                  height: 1.5,
+                                  color: selectedDate == index
+                                      ? AppTheme.white
+                                      : AppTheme.dark,
+                                ),
+                              ),
+                            ],
                           ),
-                          const SizedBox(height: 4),
-                          Text(
-                            dateList[index].day.toString(),
-                            style: TextStyle(
-                              fontFamily: AppTheme.fontFamily,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
-                              height: 1.5,
-                              color: selectedDate == index
-                                  ? AppTheme.white
-                                  : AppTheme.dark,
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                    index == dateList.length - 1
+                        ? Container()
+                        : const SizedBox(width: 12),
+                  ],
                 );
               },
             ),
