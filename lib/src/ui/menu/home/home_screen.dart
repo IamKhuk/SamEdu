@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:samedu/src/defaults/defaults.dart';
@@ -7,6 +8,7 @@ import 'package:samedu/src/model/schedule_model.dart';
 import 'package:samedu/src/theme/app_theme.dart';
 import 'package:samedu/src/ui/menu/news/news_details_screen.dart';
 import 'package:samedu/src/ui/menu/news/news_list_screen.dart';
+import 'package:samedu/src/widgets/container/lesson_container.dart';
 import 'package:samedu/src/widgets/container/news_container.dart';
 import 'package:samedu/src/widgets/title/title_01.dart';
 import 'package:samedu/src/widgets/title/view_all.dart';
@@ -359,6 +361,48 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
+                      const SizedBox(height: 20),
+                      Row(
+                        children: [
+                          const SizedBox(width: 24),
+                          const Title01(text: 'Lessons'),
+                          const Spacer(),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      NewsListScreen(news: Defaults().news),
+                                ),
+                              );
+                            },
+                            child: const ViewAll(),
+                          ),
+                          const SizedBox(width: 24),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 128,
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: Defaults().lessons.length,
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          itemBuilder: (context, index) {
+                            return Row(
+                              children: [
+                                LessonContainer(
+                                  lesson: Defaults().lessons[index],
+                                ),
+                                index == Defaults().lessons.length - 1
+                                    ? Container()
+                                    : const SizedBox(width: 16),
+                              ],
+                            );
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 92),
                     ],
                   ),
                 ),
