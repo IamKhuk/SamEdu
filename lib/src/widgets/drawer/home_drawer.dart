@@ -1,10 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:samedu/src/defaults/defaults.dart';
 import 'package:samedu/src/ui/menu/home/all_lessons_screen.dart';
-import 'package:samedu/src/ui/menu/main_screen.dart';
 import 'package:samedu/src/ui/menu/news/news_list_screen.dart';
+import 'package:samedu/src/ui/menu/profile/profile_settings_screen.dart';
 
 import '../../theme/app_theme.dart';
 import '../../ui/menu/home/teachers_screen.dart';
@@ -30,15 +29,17 @@ class HomeDrawer extends StatelessWidget {
         child: ListView(
           children: <Widget>[
             buildHeader(
-              urlImage: img,
-              firstName: name,
-              lastName: email,
-              onClicked: () => Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => const MainScreen(),
-                ),
-              ),
-            ),
+                urlImage: img,
+                firstName: name,
+                lastName: email,
+                onClicked: () {
+                  Navigator.pop(context);
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const ProfileSettingsScreen(),
+                    ),
+                  );
+                }),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Column(

@@ -13,15 +13,20 @@ class Title02 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: TextStyle(
-        fontFamily: AppTheme.fontFamily,
-        fontSize: 14,
-        fontWeight: FontWeight.w500,
-        height: 1.43,
-        color: color,
-      ),
+    return Row(
+      children: [
+        const SizedBox(width: 16),
+        Text(
+          text,
+          style: TextStyle(
+            fontFamily: AppTheme.fontFamily,
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            height: 1.43,
+            color: color,
+          ),
+        ),
+      ],
     );
   }
 }

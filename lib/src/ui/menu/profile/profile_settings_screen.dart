@@ -1,31 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:samedu/src/ui/auth/login_screen.dart';
-import 'package:samedu/src/widgets/title/title_02.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:samedu/src/defaults/defaults.dart';
+import 'package:samedu/src/theme/app_theme.dart';
+import 'package:samedu/src/widgets/container/leading_main.dart';
+import 'package:samedu/src/widgets/title/heading_01.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:io';
 import '../../../dialog/bottom_dialog.dart';
-import '../../../theme/app_theme.dart';
 import '../../../widgets/button/main_button.dart';
+import '../../../widgets/title/title_02.dart';
 
-class BasicScreen extends StatefulWidget {
-  const BasicScreen({Key? key}) : super(key: key);
+class ProfileSettingsScreen extends StatefulWidget {
+  const ProfileSettingsScreen({Key? key}) : super(key: key);
 
   @override
-  _BasicScreenState createState() => _BasicScreenState();
+  _ProfileSettingsScreenState createState() => _ProfileSettingsScreenState();
 }
 
-class _BasicScreenState extends State<BasicScreen> {
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
+class _ProfileSettingsScreenState extends State<ProfileSettingsScreen> {
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController bioController = TextEditingController();
+
   DateTime birthDate = DateTime.now();
   bool onHover = true;
   bool _isLoading = false;
 
   @override
+  void initState() {
+    _getInfo();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    if (_firstNameController.text.isNotEmpty &&
-        _lastNameController.text.isNotEmpty &&
+    if (firstNameController.text.isNotEmpty &&
+        lastNameController.text.isNotEmpty &&
         birthDate != DateTime.now()) {
       setState(() {
         onHover = false;
@@ -37,6 +47,13 @@ class _BasicScreenState extends State<BasicScreen> {
     }
     return Scaffold(
       backgroundColor: AppTheme.white,
+      appBar: AppBar(
+        backgroundColor: AppTheme.white,
+        elevation: 0,
+        leading: const LeadingBack(),
+        title: const Heading01(text: 'Edit Profile'),
+        centerTitle: true,
+      ),
       body: GestureDetector(
         onTap: () {
           FocusScopeNode currentFocus = FocusScope.of(context);
@@ -49,21 +66,11 @@ class _BasicScreenState extends State<BasicScreen> {
             Expanded(
               child: ListView(
                 shrinkWrap: true,
-                padding: const EdgeInsets.symmetric(horizontal: 24),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 24,
+                ),
                 children: [
-                  const SizedBox(height: 72),
-                  const Text(
-                    'One small step...',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 36,
-                      fontFamily: AppTheme.fontFamily,
-                      height: 1.44,
-                      color: AppTheme.dark,
-                    ),
-                    textAlign: TextAlign.start,
-                  ),
-                  const SizedBox(height: 80),
                   Row(
                     children: [
                       Column(
@@ -94,7 +101,7 @@ class _BasicScreenState extends State<BasicScreen> {
                               ),
                               child: TextFormField(
                                 enabled: true,
-                                controller: _firstNameController,
+                                controller: firstNameController,
                                 enableSuggestions: true,
                                 textAlignVertical: TextAlignVertical.center,
                                 cursorColor: AppTheme.blue,
@@ -151,7 +158,7 @@ class _BasicScreenState extends State<BasicScreen> {
                               ),
                               child: TextFormField(
                                 enabled: true,
-                                controller: _lastNameController,
+                                controller: lastNameController,
                                 enableSuggestions: true,
                                 textAlignVertical: TextAlignVertical.center,
                                 cursorColor: AppTheme.blue,
@@ -243,6 +250,128 @@ class _BasicScreenState extends State<BasicScreen> {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 16),
+                  const Title02(text: 'Bio'),
+                  const SizedBox(height: 12),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: BoxDecoration(
+                      color: AppTheme.lightTwo,
+                      borderRadius: BorderRadius.circular(12),
+                      boxShadow: [
+                        BoxShadow(
+                          offset: const Offset(0, 10),
+                          blurRadius: 75,
+                          spreadRadius: 0,
+                          color: const Color(0xFF939393).withOpacity(0.07),
+                        ),
+                      ],
+                    ),
+                    child: TextField(
+                      enabled: true,
+                      maxLines: 5,
+                      controller: bioController,
+                      enableSuggestions: true,
+                      textAlignVertical: TextAlignVertical.center,
+                      cursorColor: AppTheme.blue,
+                      enableInteractiveSelection: true,
+                      style: const TextStyle(
+                        fontFamily: AppTheme.fontFamily,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        height: 1.5,
+                        color: AppTheme.dark,
+                      ),
+                      autofocus: false,
+                      decoration: const InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Write a bio...',
+                        hintStyle: TextStyle(
+                          fontFamily: AppTheme.fontFamily,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w500,
+                          height: 1.5,
+                          color: AppTheme.light,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Title02(text: 'Faculty'),
+                  const SizedBox(height: 12),
+                  Container(
+                    height: 44,
+                    width: MediaQuery.of(context).size.width - 32,
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: AppTheme.lightTwo,
+                      boxShadow: [
+                        BoxShadow(
+                          offset: const Offset(0, 10),
+                          blurRadius: 75,
+                          spreadRadius: 0,
+                          color: const Color(0xFF939393).withOpacity(0.07),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: const [
+                        Text(
+                          'International Education Programs',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14,
+                            fontFamily: AppTheme.fontFamily,
+                            color: AppTheme.dark,
+                            height: 1.5,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Title02(text: 'Major'),
+                  const SizedBox(height: 12),
+                  Container(
+                    height: 44,
+                    width: MediaQuery.of(context).size.width - 32,
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: AppTheme.lightTwo,
+                      boxShadow: [
+                        BoxShadow(
+                          offset: const Offset(0, 10),
+                          blurRadius: 75,
+                          spreadRadius: 0,
+                          color: const Color(0xFF939393).withOpacity(0.07),
+                        ),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: const [
+                        Text(
+                          'Computer Science',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 14,
+                            fontFamily: AppTheme.fontFamily,
+                            color: AppTheme.dark,
+                            height: 1.5,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -263,17 +392,18 @@ class _BasicScreenState extends State<BasicScreen> {
                   setState(() {
                     _isLoading = true;
                   });
-                  _saveBasicInfo(
-                    _firstNameController.text.replaceAll(' ', ''),
-                    _lastNameController.text.replaceAll(' ', ''),
+                  _savePersonalInfo(
+                    firstNameController.text.replaceAll(' ', ''),
+                    lastNameController.text.replaceAll(' ', ''),
                     birthDate,
+                    bioController.text,
                   );
                   setState(() {
                     _isLoading = false;
                   });
                 },
                 child: MainButton(
-                  text: 'Sign in',
+                  text: 'Save changes',
                   onHover: onHover,
                   onLoading: _isLoading,
                 ),
@@ -285,10 +415,11 @@ class _BasicScreenState extends State<BasicScreen> {
     );
   }
 
-  Future<void> _saveBasicInfo(
+  Future<void> _savePersonalInfo(
     String firstName,
     String lastName,
     DateTime birthDate,
+    String bio,
   ) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String date = birthDate.day.toString() +
@@ -302,16 +433,8 @@ class _BasicScreenState extends State<BasicScreen> {
       prefs.setString('firstName', firstName);
       prefs.setString('lastName', lastName);
       prefs.setString('birthDate', date);
-      prefs.setBool('isWelcome', true);
-      Navigator.popUntil(context, (route) => route.isFirst);
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return const LoginScreen();
-          },
-        ),
-      );
+      prefs.setString('bio', bio);
+      Navigator.pop(context);
     } else {
       BottomDialog.showFailed(
         context,
@@ -319,5 +442,18 @@ class _BasicScreenState extends State<BasicScreen> {
         'Please fill up all required forms',
       );
     }
+  }
+
+  Future<void> _getInfo() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String date = prefs.getString('birthDate') ?? '01/01/2000';
+    List<int> list = date.split('/').map(int.parse).toList();
+    DateTime _birthDate = DateTime(list[2], list[1], list[0]);
+    setState(() {
+      firstNameController.text = prefs.getString('firstName') ?? 'No name';
+      lastNameController.text = prefs.getString('lastName') ?? 'No nome';
+      birthDate = _birthDate;
+      bioController.text = prefs.getString('bio')?? Defaults().me.bio;
+    });
   }
 }

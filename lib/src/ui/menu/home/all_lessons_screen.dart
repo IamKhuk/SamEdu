@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:samedu/src/defaults/defaults.dart';
+import 'package:samedu/src/widgets/container/leading_main.dart';
 
 import '../../../dialog/bottom_dialog.dart';
 import '../../../theme/app_theme.dart';
@@ -21,28 +22,8 @@ class _AllLessonsScreenState extends State<AllLessonsScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leadingWidth: 76,
-        leading: Row(
-          children: [
-            const SizedBox(width: 24),
-            GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Container(
-                height: 44,
-                width: 44,
-                decoration: BoxDecoration(
-                  color: AppTheme.white,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: SvgPicture.asset('assets/icons/left.svg'),
-                ),
-              ),
-            ),
-          ],
-        ),
+        leadingWidth: 60,
+        leading: const LeadingBack(),
         centerTitle: true,
         title: const Text(
           'All Lessons',
