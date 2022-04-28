@@ -45,6 +45,14 @@ class NewsContainer extends StatelessWidget {
                   AppTheme.lightTwo.withOpacity(0.1),
                 ],
               ),
+              boxShadow: [
+                BoxShadow(
+                  offset: const Offset(0, 2),
+                  blurRadius: 20,
+                  spreadRadius: 0,
+                  color: AppTheme.dark.withOpacity(0.1),
+                ),
+              ],
             ),
           ),
           Column(

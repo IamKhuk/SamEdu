@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:samedu/src/widgets/container/leading_main.dart';
 
 import '../../../defaults/defaults.dart';
 import '../../../dialog/bottom_dialog.dart';
@@ -21,28 +21,8 @@ class _TeachersScreenState extends State<TeachersScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leadingWidth: 76,
-        leading: Row(
-          children: [
-            const SizedBox(width: 24),
-            GestureDetector(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: Container(
-                height: 44,
-                width: 44,
-                decoration: BoxDecoration(
-                  color: AppTheme.white,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: SvgPicture.asset('assets/icons/left.svg'),
-                ),
-              ),
-            ),
-          ],
-        ),
+        leadingWidth: 60,
+        leading: const LeadingBack(),
         centerTitle: true,
         title: const Text(
           'Teachers',
@@ -71,6 +51,14 @@ class _TeachersScreenState extends State<TeachersScreen> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: AppTheme.blue,
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(0, 2),
+                      blurRadius: 20,
+                      spreadRadius: 0,
+                      color: AppTheme.dark.withOpacity(0.1),
+                    ),
+                  ],
                 ),
                 child: Row(
                   children: [
@@ -80,8 +68,8 @@ class _TeachersScreenState extends State<TeachersScreen> {
                         Defaults().teachers[index].avatar,
                       ),
                       child: SizedBox(
-                        height: 64,
-                        width: 64,
+                        height: 48,
+                        width: 48,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(64),
                           child: Image.asset(
@@ -97,7 +85,7 @@ class _TeachersScreenState extends State<TeachersScreen> {
                         Defaults().teachers[index].fullName,
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 22,
+                          fontSize: 18,
                           fontFamily: AppTheme.fontFamily,
                           height: 1.5,
                           color: AppTheme.white,

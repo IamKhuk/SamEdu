@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:samedu/src/defaults/defaults.dart';
 import 'package:samedu/src/widgets/container/leading_main.dart';
 
@@ -52,6 +51,14 @@ class _AllLessonsScreenState extends State<AllLessonsScreen> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: AppTheme.blue,
+                  boxShadow: [
+                    BoxShadow(
+                      offset: const Offset(0, 2),
+                      blurRadius: 20,
+                      spreadRadius: 0,
+                      color: AppTheme.dark.withOpacity(0.1),
+                    ),
+                  ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
