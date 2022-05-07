@@ -12,7 +12,7 @@ class MeModel {
     required this.lastName,
     required this.bio,
     required this.email,
-    this.avatar = 'assets/images/me.jpg',
+    this.avatar = 'assets/images/me.png',
     required this.birthDate,
     required this.gender,
   });
